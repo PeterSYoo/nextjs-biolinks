@@ -12,19 +12,29 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ socials, user, links, products }) => {
-  console.log(products);
+  console.log('products', products);
   console.log('links', links);
   console.log('user', user);
   console.log('socials', socials);
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
-        <title>Create Next App</title>
+        <title>{user[0].name}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        asdfg
+      <main className="flex w-full flex-1 justify-center">
+        <div className="space-y-4">
+          <div className="flex justify-between items-center w-full">
+            <Image
+              src={urlFor(user[0].image).url()}
+              alt="avatar"
+              width={75}
+              height={75}
+              className="rounded-lg items-center flex"
+            />
+          </div>
+        </div>
       </main>
     </div>
   );
