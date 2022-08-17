@@ -33,7 +33,7 @@ export interface UserTypes {
   socialsTitle: string;
   linksTitle: string;
   productsTitle: string;
-  showSocialSection: boolean;
+  showSocialsSection: boolean;
   showLinksSection: boolean;
   showProductsSection: boolean;
   image: {
