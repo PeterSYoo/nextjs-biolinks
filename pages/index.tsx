@@ -118,7 +118,7 @@ const Home: NextPage<Props> = ({ socials, user, links, products }) => {
                 <h1 className="font-semibold text-xl pb-2 pt-4 flex justify-end">
                   {user[0].productsTitle}
                 </h1>
-                <Section>
+                <Section utilStyles="bg-slate-200 shadow-lg">
                   <div className="grid items-center space-y-2 w-full">
                     <div className="overflow-x-auto flex gap-2 items-center">
                       {products
@@ -138,6 +138,47 @@ const Home: NextPage<Props> = ({ socials, user, links, products }) => {
                             price={product.price}
                             discount={product.discount || null}
                             logo={product.logo}
+                          />
+                        ))}
+                    </div>
+                  </div>
+                </Section>
+              </motion.div>
+            )}
+
+            {/* mentioned links */}
+            {user[0].showLinksSection && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: 'easeInOut',
+                  delay: 0.5,
+                }}
+              >
+                <h1 className="font-semibold text-xl pb-2 pt-4 flex justify-end">
+                  {user[0].linksTitle}
+                </h1>
+                <Section utilStyles="bg-slate-200 shadow-lg">
+                  <div className="gap-1 grid items-center space-y-2 w-full">
+                    <div className="overflow-x-auto flex gap-2 items-center">
+                      {links
+                        .sort((a: any, b: any) => {
+                          return (
+                            new Date(b._createdAt).getTime() -
+                            new Date(a._createdAt).getTime()
+                          );
+                        })
+                        ?.map((link: any) => (
+                          <Links
+                            key={link._id}
+                            link={link.link}
+                            linkText={link.linkText}
+                            description={link.description}
+                            createdAt={link._createdAt}
+                            coupon={link.coupon}
+                            couponAmt={link.counponAmt}
                           />
                         ))}
                     </div>
